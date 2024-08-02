@@ -2,10 +2,11 @@ const gridSize = 600;
 let rows = 16; //16x16
 let cols = 16; //16x16
 let resizeButton = document.querySelector("#size");
-
 const sketchArea = document.querySelector("#sketch-area");
 sketchArea.style.width = `${gridSize}px`; //600px comprimento
 sketchArea.style.height = `${gridSize}px`; //600px altura
+let fadeButton = document.querySelector("#fade");
+let randomButton = document.querySelector("#random");
 
 function createGridCells() {
   //funcao para criar grid
@@ -20,6 +21,24 @@ function createGridCells() {
     gridCell.addEventListener("mouseover", blackColor); //mouse hover
     function blackColor() {
       gridCell.style.backgroundColor = "black"; //muda a cor de cada quadrado p preto
+    }
+
+    randomButton.addEventListener("click", random);
+    function random() {
+      let gridArray = [];
+      gridArray.push(gridCell);
+      console.log(gridArray);
+
+      gridArray.forEach((item) => {
+        item.addEventListener("mouseover", hover);
+        function hover() {
+          item.style.backgroundColor = `rgb(${Math.floor(
+            Math.random() * 256
+          )}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+            Math.random() * 256
+          )})`;
+        }
+      });
     }
   }
 }
@@ -49,6 +68,41 @@ function changeSize() {
       gridCell.addEventListener("mouseover", blackColor); //mouse hover
       function blackColor() {
         gridCell.style.backgroundColor = "black"; //muda a cor de cada quadrado p preto
+      }
+
+      randomButton.addEventListener("click", random);
+      function random() {
+        let gridArray = [];
+        gridArray.push(gridCell);
+        console.log(gridArray);
+
+        gridArray.forEach((item) => {
+          item.addEventListener("mouseover", hover);
+          function hover() {
+            item.style.backgroundColor = `rgb(${Math.floor(
+              Math.random() * 256
+            )}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+              Math.random() * 256
+            )})`;
+          }
+        });
+      }
+
+      fadeButton.addEventListener("click", fade);
+      function fade() {
+        let gridArray = [];
+        gridArray.push(gridCell);
+        console.log(gridArray);
+
+        gridArray.forEach((item) => {
+          item.addEventListener("mouseover", hover);
+          function hover() {
+            item.style.backgroundColor = "black";
+            for (i = 1; i < 10; i++) {
+              return (item.style.opacity = i * 0.1);
+            }
+          }
+        });
       }
     }
   }
