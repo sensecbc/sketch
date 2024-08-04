@@ -3,10 +3,11 @@ let rows = 16; //16x16
 let cols = 16; //16x16
 let resizeButton = document.querySelector("#size");
 const sketchArea = document.querySelector("#sketch-area");
-sketchArea.style.width = `${gridSize}px`; //600px comprimento
-sketchArea.style.height = `${gridSize}px`; //600px altura
 let fadeButton = document.querySelector("#fade");
 let randomButton = document.querySelector("#random");
+
+sketchArea.style.width = `${gridSize}px`; //600px comprimento
+sketchArea.style.height = `${gridSize}px`; //600px altura
 
 function createGridCells() {
   //funcao para criar grid
@@ -118,12 +119,8 @@ function changeSize() {
         gridCell.addEventListener("mouseover", hover2);
         function hover2() {
           gridCell.style.backgroundColor = "black";
-          let currentOpacity = gridCell.style.opacity;
-          if (currentOpacity) {
-            gridCell.style.opacity = Number(currentOpacity) + 0.1;
-          } else {
-            gridCell.style.opacity = 0.1;
-          }
+          let currentOpacity = Number(gridCell.style.opacity);
+          gridCell.style.opacity = currentOpacity + 0.1;
         }
       }
     }
