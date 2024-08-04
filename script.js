@@ -25,6 +25,7 @@ function createGridCells() {
 
     randomButton.addEventListener("click", random);
     function random() {
+      gridCell.style.backgroundColor = "white";
       let gridArray = [];
       gridArray.push(gridCell);
       console.log(gridArray);
@@ -40,8 +41,27 @@ function createGridCells() {
         }
       });
     }
+
+    fadeButton.addEventListener("click", fade);
+    function fade() {
+      let gridArray = [];
+      gridArray.push(gridCell);
+      console.log(gridArray);
+      gridCell.style.backgroundColor = "white";
+      gridCell.addEventListener("mouseover", hover2);
+      function hover2() {
+        gridCell.style.backgroundColor = "black";
+        let currentOpacity = gridCell.style.opacity;
+        if (currentOpacity) {
+          gridCell.style.opacity = Number(currentOpacity) + 0.1;
+        } else {
+          gridCell.style.opacity = 0.1;
+        }
+      }
+    }
   }
 }
+
 createGridCells();
 
 //gridCell.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`; rgb coloring
@@ -72,6 +92,7 @@ function changeSize() {
 
       randomButton.addEventListener("click", random);
       function random() {
+        gridCell.style.backgroundColor = "white";
         let gridArray = [];
         gridArray.push(gridCell);
         console.log(gridArray);
@@ -93,16 +114,17 @@ function changeSize() {
         let gridArray = [];
         gridArray.push(gridCell);
         console.log(gridArray);
-
-        gridArray.forEach((item) => {
-          item.addEventListener("mouseover", hover);
-          function hover() {
-            item.style.backgroundColor = "black";
-            for (i = 1; i < 10; i++) {
-              return (item.style.opacity = i * 0.1);
-            }
+        gridCell.style.backgroundColor = "white";
+        gridCell.addEventListener("mouseover", hover2);
+        function hover2() {
+          gridCell.style.backgroundColor = "black";
+          let currentOpacity = gridCell.style.opacity;
+          if (currentOpacity) {
+            gridCell.style.opacity = Number(currentOpacity) + 0.1;
+          } else {
+            gridCell.style.opacity = 0.1;
           }
-        });
+        }
       }
     }
   }
